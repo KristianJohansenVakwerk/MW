@@ -1,0 +1,30 @@
+.List {
+	margin-top: 2em;
+
+	.List-item {
+		display: block;
+
+		a {
+			@extend %u-text--nav;
+		}
+
+		&.List-item--subNavTitle {
+			@extend %u-text--nav;
+			@extend %u-text--bold;
+		}
+	}
+}
+
+.List.List--mainNav {
+	margin-top: 0;
+}
+.List.List--subNav {
+
+	.List-item {
+		pointer-events: all;
+	}
+
+	.List-item.List-item--notClickable {
+		pointer-events: none;
+	}
+}

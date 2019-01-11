@@ -1,0 +1,83 @@
+/** @define Component */
+
+
+/**
+ * Component
+ */
+
+
+.Component{
+	
+	@extend %u-grid;
+	
+	.Component-head{
+	   
+	   &:before{
+       
+       content:'';
+       display:block;
+      
+       background:#999;
+        height:1px;
+        @include responsive('margin-bottom',$base-grid-gutter);
+      }
+      
+      
+	   
+	   @extend %u-gridItem--4-10;
+
+	}
+
+	.Component-body{
+    
+    &:before{
+       
+       content:'';
+       display:block;
+       
+       height:1px;
+       background:#DDD;
+        @include responsive('margin-bottom',$base-grid-gutter);
+        
+      }
+      
+		@extend %u-gridItem--6-10;
+		position:relative;
+	}
+
+	.Component-foot{
+		display: inline-block;
+	}
+	
+	&.Component--fullWidth {
+		
+		.Component-head {
+			@extend %u-gridItem;
+			width: 100%;
+		}
+		
+		.Component-body {
+			@extend %u-gridItem;
+			width: 100%;
+			margin-top: 10px;
+		}
+	}
+	
+	&.Component--title {
+		height: 1000px;
+		position: relative;
+		background: #DDD; 
+		margin: 0; 
+		
+		.Component-body {
+			position: absolute;
+			top: 50%; 
+			left: 50%; 
+			transform: translate(-50%,-50%);
+			width: auto;
+			height: auto;
+			
+		}
+	}
+}
+  

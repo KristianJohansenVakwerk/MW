@@ -1,0 +1,125 @@
+.Template {
+	position: relative;
+	color: black;
+
+	.Template-sections {
+		
+		margin-left: -20px;
+
+		.Template-section {
+
+			display: inline-block;
+			width: 50%;
+			vertical-align: top;
+			padding-left: 20px;
+			&.Template-section--summary {
+				
+				position: absolute;
+				top:78px;
+				right:0;
+				z-index: 0;
+				padding-bottom: 60px;
+
+				.Content {
+					display: inline-block;
+				}
+				
+				span {
+					display: inline-block;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	
+	.Template-title {
+		h1 {
+			@extend %u-text--large;
+			
+		}
+
+		&.Template-title--alt {
+			width:80%;
+			position: relative;
+		}
+		
+	}
+
+	
+
+	.Template-gallery { 
+		position: relative;
+		z-index: 1;
+		opacity: 1;
+		transition: opacity .3s ease-in-out;
+
+		@include responsive('margin-top', ('*': 20vh, 'mobile': 30px));
+		
+		.Template-gallery-container {
+			@include pad-ratio(1400,850);
+			position: relative;	
+		}
+			
+	}
+
+	.Template-sound {
+
+		position: fixed;
+		bottom:0;
+		opacity: 0.8;
+		left: 25%;
+		width: 100%;
+		height: 40px;
+		padding-left: 0px;
+		background-color: white;
+		z-index: 99;
+		transform: translate3d(0,0,0);
+		transition: transform .3s .5s ease-in-out;
+
+		@include when-inside('.Site--sound') {
+			transform: translate3d(0,0,0);
+		}
+
+	}
+
+	.Template-text {
+
+		position: relative;
+		width: 55%;
+		margin-left: 45%;
+		@include responsive('margin-top', ('*': 50px, 'mobile': 30px));
+		display: none;
+	}
+	
+	
+}
+
+.Template.Template--text {
+
+	.Template-gallery {
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+
+.fade-appear,
+.fade-enter {
+	opacity: 9;
+	z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {	
+	opacity: 1;
+	transition: all 300ms linear 150ms;
+}
+
+.fade-exit {
+	opacity: 1;		
+}
+
+.fade-exit.fade-exit-active {
+	opacity: 1;
+	transition: opacity 150ms linear;
+}

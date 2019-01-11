@@ -1,0 +1,66 @@
+.Grid {
+	@extend %u-grid;
+
+	.Grid-item {
+		@extend %u-gridItem;
+		width: 50%; 
+
+
+	}
+
+	.Grid-item--full {
+		@extend %u-gridItem;
+		padding-left: 70px;
+		width: 100%;
+	}
+
+}
+
+.Grid.Grid--2 {
+
+	.Grid-item {
+		width: 50%;
+
+		@include respond-to(mobile) {
+			width: 100%;
+		}
+
+	}
+}
+
+.Grid.Grid--3 {
+
+	.Grid-item {
+		width: 33.3333%;
+
+		@include respond-to(mobile) {
+			width: 100%;
+		}
+
+	}
+}
+
+
+.Grid.Grid--4 {
+	.Grid-item {
+		width: 25%;
+	}
+}
+
+.Grid.Grid--5 {
+
+	.Grid-item {
+		width: 20%;
+	}
+
+}
+
+.Grid.Grid--6 {
+	
+	.Grid-item {
+		width: 16.6666%;
+	}
+
+}
+
+

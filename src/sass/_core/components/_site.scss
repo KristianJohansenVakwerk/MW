@@ -1,0 +1,30 @@
+.Site{
+  
+  *[data-box-mode="ratio"]{
+    @extend %u-box--ratio;
+  }
+  
+  *[data-box-mode="fluid"]{
+    @extend %u-box--fluid;
+    padding-top:0;
+  }
+  
+}
+
+.Site-content--mobile{
+  display:none;
+  
+}
+
+@include respond-to('mobile'){
+  
+  .Site-content--desktop{
+    display:none;
+    
+  }
+  .Site-content--mobile{
+    display:block;
+    
+  }
+  
+}

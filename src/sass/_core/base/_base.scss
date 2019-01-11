@@ -1,0 +1,191 @@
+/**
+ * A thin layer on top of normalize.css that provides a starting point more
+ * suitable for web applications. Removes the default spacing and border for
+ * appropriate elements.
+ */
+
+/**
+ * High, page-level styling.
+ *
+ * 1. Set the default font-family, `font-size` and `line-height` for the entire project,
+ *    sourced from our default variables. The `font-size` is calculated to exist
+ *    in ems, the `line-height` is calculated to exist unitlessly.
+ * 2. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
+ *    navigating between pages that do/do not have enough content to produce
+ *    scrollbars naturally.
+ * 3. Ensure the page always fills at least the entire height of the viewport.
+ * 4. Fonts on OSX will look more consistent with other systems that do not
+ *    render text using sub-pixel anti-aliasing.
+ */
+
+html {
+  font-family: $base-font-family; /* 1 */
+  font-size: ($base-font-size / 16px) * 1em; /* 1 */
+  line-height: $base-line-height / $base-font-size; /* 1 */
+  letter-spacing: $base-letter-spacing;
+  background: $base-background;
+  color: $base-color;
+  overflow-y: scroll; /* 2 */
+  min-height: 100%; /* 3 */
+  -moz-osx-font-smoothing: grayscale; /* 4 */
+   -webkit-font-smoothing: antialiased; /* 4 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+  color: $base-link-color;
+  text-decoration: none;
+  transition: opacity 0.4s ease, border 0.4s ease, color 0.4s ease;
+}
+
+.Site--no-touch{
+  a:hover{
+    opacity:$base-link-opacity-hover;
+  }
+}
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Work around a Firefox/IE bug where the transparent `button` background
+ * results in a loss of the default `button` focus styles.
+ */
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  border: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Suppress the focus outline on links that cannot be accessed via keyboard.
+ * This prevents an unwanted focus outline from appearing around elements that
+ * might still respond to pointer events.
+ */
+
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+/**
+ * Emboldened elements
+ */
+
+b,
+strong {
+  font-weight: normal;
+  font-family: $base-font-family-bold;
+}
+
+/**
+ * Address
+ */
+
+address {
+  font-style: normal;
+}
+
+/**
+ * Selection
+ */
+
+::selection {
+  background-color: $base-selection-background;
+  color: $base-selection-color;
+  text-shadow: none;
+}
+
+/**
+ * 1. Fluid images for responsive purposes.
+ * 2. Offset `alt` text from surrounding copy.
+ * 3. Setting `vertical-align` removes the whitespace that appears under `img`
+ *    elements when they are dropped into a page as-is. Safer alternative to
+ *    using `display: block;`.
+ */
+
+img {
+  max-width: 100%; /* 1 */
+  font-style: italic; /* 2 */
+  vertical-align: middle; /* 3 */
+}
+
+/**
+ * If a `width` and/or `height` attribute have been explicitly defined, let’s
+ * not make the image fluid.
+ */
+
+img[width],
+img[height] {
+  max-width: none;
+}
+
+/**
+ * Text inputs
+ */
+
+input,
+textarea {
+  outline: none;
+  border: 0;
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+input[type="search"] {
+  box-sizing: inherit;
+}
+
+::-webkit-input-placeholder {
+  color: $base-placeholder-color;
+}
+
+/**
+ * Text tags all set to base font size
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,ul,input {
+  @include font-size($base-font-size);
+  font-weight: normal;
+}

@@ -1,0 +1,192 @@
+%Theme--scaffold{
+	
+	/*
+	
+	Site
+	--------------------
+		
+	*/
+	
+
+	.Site-meta{
+		
+		display:none!important;
+		
+	}
+	
+	.Site-page{
+		
+		@extend %u-container;
+		
+	}
+
+	
+
+
+    .Site-burger{
+
+		position:fixed;
+		top:0px;
+		right:0px;
+		width:$base-icon-size;
+		height:$base-icon-size;
+		z-index:3;
+		cursor:pointer;
+
+		& > *{
+
+			@include fill-parent;
+
+			.Icon{
+				@include center;
+			}
+			
+			transition:opacity 0.5s ease;
+
+		}
+
+		.Site-closeMenu{
+			opacity:0;
+			pointer-events:none;
+
+		}
+
+		
+
+	}
+
+	&.Site--menu{
+
+		.Site-openMenu{
+
+			opacity:0;
+			pointer-events:none;
+
+		}
+
+		.Site-closeMenu{
+
+			opacity:1;
+			pointer-events:all;
+
+		}
+
+	}
+
+	.Site-menu{
+
+		pointer-events:none;
+		transition:opacity 0.5s ease;
+		padding:20px;
+		position:fixed;
+		z-index:2;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		background:#DDD;
+		opacity:0;
+
+	}
+
+	&.Site--menu .Site-menu{
+
+
+			pointer-events:all;
+			opacity:1;
+
+
+	}
+	
+	/*
+	
+	Container
+	--------------------
+		
+	*/
+	
+	.Container{
+
+			@extend %u-container;
+		
+
+	}
+	
+	
+	/*
+	
+	Section
+	--------------------
+		
+	*/
+	
+	.Section{
+
+		padding:20px;
+
+		.Section-body{
+
+			@extend %u-container;
+		
+		}
+
+	}
+
+	/*
+	
+	Item
+	--------------------
+		
+	*/
+	
+	.Item{
+
+		.Item-media{
+
+			@include pad-ratio(600,400);
+			margin-bottom:12px;
+			position:relative;
+		}
+
+	}
+
+	/*
+	
+	Grid
+	--------------------
+		
+	*/
+	
+	.Grid{
+
+		@extend %u-grid;
+
+		& > *{
+
+			@extend %u-gridItem;
+			@include responsive('padding-bottom',$base-padding);
+
+		}
+
+	}
+
+	.Grid--2{
+
+		& > * {
+
+			width:50%;
+		}
+
+	}
+
+	.Grid--3{
+
+		& > * {
+
+			width:33.33333333%;
+		}
+
+	}
+
+	
+}

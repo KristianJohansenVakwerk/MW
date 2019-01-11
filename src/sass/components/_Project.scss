@@ -1,0 +1,38 @@
+.Project {
+	// position: absolute;
+	// top: 50%;
+	// left: 50%;
+	// height: auto;
+	// width:100%;
+	// transform: translate(-50%,-50%);
+
+
+	.Project-title {
+		display: none;
+	}
+
+	.Project-media {
+
+		position: relative;
+		// top:5%;
+		// left: 5%;
+		width: 100%;
+		height: auto;
+		text-align: center;
+		padding-bottom: 100px;
+		// transform: translate(-50%,0%);	
+
+		.Project-image {
+			position: relative;
+			display: inline-block;
+			// margin: 0 auto;
+			margin-bottom: 100px;
+			padding: 0 20px;
+			
+
+			
+		}
+
+	}
+	
+}

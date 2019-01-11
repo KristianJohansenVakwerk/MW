@@ -1,0 +1,277 @@
+%Theme--vanilla{
+	
+	/*
+	
+	Site
+	--------------------
+		
+	*/
+	
+	&.Site--loading,&.Site--loading *{
+			
+			cursor: wait;
+	 
+	}
+
+	.Site-meta{
+		
+		display:none!important;
+		
+	}
+	
+	.Site-page{
+		
+		@extend %u-container;
+		
+	}
+	
+	.Site-logo{
+		width:150px;
+		padding: 10px;
+		background:#EEE;
+		margin-bottom:20px;
+	}
+	
+	.Site-head{
+		
+		padding:20px 0;
+		
+	}
+	
+	.Site-head,.Site-body,.Site-foot{
+		
+		border-bottom:1px solid #CCC;
+		padding:20px 0;
+	}
+	
+	.Site-body{
+		
+		padding-bottom:150px;
+	}
+	
+	.Site-foot{
+		
+		border-bottom:none;
+		
+	}
+	
+
+
+    .Site-burger{
+
+		position:fixed;
+		top:20px;
+		right:20px;
+		width:$base-icon-size;
+		height:$base-icon-size;
+		z-index:3;
+		cursor:pointer;
+
+		& > *{
+
+			@include fill-parent;
+
+			.Icon{
+				@include center;
+			}
+			
+			transition:opacity 0.5s ease;
+
+		}
+
+		.Site-closeMenu{
+			opacity:0;
+			pointer-events:none;
+
+		}
+
+		
+
+	}
+
+	&.Site--menu{
+
+		.Site-openMenu{
+
+			opacity:0;
+			pointer-events:none;
+
+		}
+
+		.Site-closeMenu{
+
+			opacity:1;
+			pointer-events:all;
+
+		}
+
+	}
+
+	.Site-menu{
+
+		pointer-events:none;
+		transition:opacity 0.5s ease;
+		padding:20px;
+		position:fixed;
+		z-index:2;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		background:#DDD;
+		opacity:0;
+
+	}
+
+	&.Site--menu .Site-menu{
+
+
+			pointer-events:all;
+			opacity:1;
+
+
+	}
+	
+	/*
+	
+	Navigation
+	--------------------
+		
+	*/
+	
+	.Navigation li{
+		
+		display:block;
+		margin-right:20px;
+		
+		& .is-active{
+			
+		
+				
+				color:black;
+	
+ 
+			
+		}
+		
+	}
+	
+	/*
+	
+	Content
+	--------------------
+		
+	*/
+	
+	.Content{
+		
+		p{
+			margin-bottom:20px;
+			max-width:800px;
+			
+		}
+		
+	}
+
+	/*
+	
+	Section
+	--------------------
+		
+	*/
+	
+	.Section{
+
+		padding:20px;
+
+		.Section-body{
+
+			@extend %u-container;
+			border-top:1px solid #CCC;
+			border-bottom:1px solid #CCC;
+			padding-top:20px;
+			padding-bottom:20px;
+		}
+
+	}
+
+	/*
+	
+	Item
+	--------------------
+		
+	*/
+	
+	.Item{
+
+		.Item-media{
+
+			@include pad-ratio(600,400);
+			margin-bottom:12px;
+			position:relative;
+		}
+
+	}
+
+	/*
+	
+	Grid
+	--------------------
+		
+	*/
+	
+	.Grid{
+
+		@extend %u-grid;
+
+		& > *{
+
+			@extend %u-gridItem;
+			@include responsive('padding-bottom',$base-padding);
+
+		}
+
+	}
+
+	.Grid--2{
+
+		& > * {
+
+			width:50%;
+		}
+
+	}
+
+	.Grid--3{
+
+		& > * {
+
+			width:33.33333333%;
+		}
+
+	}
+
+	/*
+	
+	Effects
+	--------------------
+		
+	*/
+
+	.is-visible{
+
+		transition : transform 1s $easeOutExpo, opacity 1s $easeOutExpo;
+		opacity:1;
+		transform:none;
+
+	}
+
+	.is-invisible{
+
+		transition : transform 1s $easeOutExpo, opacity 1s $easeOutExpo;
+		opacity:0;
+		transform:translateY(20px);
+
+	}
+	
+}

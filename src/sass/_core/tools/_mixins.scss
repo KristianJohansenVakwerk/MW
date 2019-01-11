@@ -1,0 +1,566 @@
+/* Strip unit */
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+/* Express pixel size as viewport width */
+
+@mixin vw($property, $pixelValue) {
+  #{$property}: $pixelValue;
+  #{$property}: ((100 / $base-vw) * strip-unit( $pixelValue )) + vw;
+}
+
+/* Express pixel size as viewport width */
+
+@mixin vh($property, $pixelValue) {
+  #{$property}: $pixelValue;
+  #{$property}: ((100 / $base-vh) * strip-unit( $pixelValue )) + vh;
+}
+
+/* Col and Row functions */
+
+@function cols($num) {
+  @return (($base-col * $num) + ($base-gutter * ($num - 1)));
+}
+
+@function rows($num) {
+  @return (($base-row * $num) + ($base-gutter * ($num - 1)));
+}
+
+@mixin scrollable(){
+  overflow:hidden;
+  overflow-y:auto;
+
+  #{$base-touch-class} & {
+
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+
+  }
+}
+
+@mixin touch-scroll(){
+
+  overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+
+}
+
+@mixin animation($property:all,$time:0.6s,$ease:$easeOutExpo) {
+  transition:$property $time $ease;
+}
+
+/**
+ * Font size mixin
+ *
+ * This will generate a rem-based font-size with its pixel fallback.
+ *
+ * @include font-size(12px);
+ */
+
+@mixin font-size($values, $prefix:null) {
+
+   @if type-of($values) == 'map'{
+    @each $key, $value in $values {
+
+
+    @if $key == '*' {
+
+	  	font-size: $value;
+		font-size: ($value / $base-font-size) * 1rem;
+
+    } @else{
+
+      @include respond-to($key){
+
+        font-size: $value;
+		font-size: ($value / $base-font-size) * 1rem;
+
+      }
+
+    }
+  }
+  } @else{
+
+	 font-size: $values;
+	 font-size: ($values / $base-font-size) * 1rem;
+
+  }
+
+
+}
+
+/**
+ * Media query mixin
+ *
+ * A simple mixin to quickly generate whole media queries from the aliases and
+ * conditions defined in `_settings.scss`.
+ *
+ * @include respond-to(mobile) { ... }
+ */
+
+@mixin respond-to($mq) {
+  $breakpoint-found: false;
+
+  // Loop through the list of breakpoints in our settings file
+  @each $breakpoint in $breakpoints {
+    // Grab the alias and the condition from their respective locations in the list
+    $alias: nth($breakpoint, 1);
+    $condition: nth($breakpoint, 2);
+
+    // If the media query we’ve specified has an alias and a condition
+    @if $mq == $alias and $condition {
+      // tell the mixin that we’ve found it
+      $breakpoint-found: true;
+
+      // and spit it out here
+      @media #{$condition} {
+        @content;
+      }
+    }
+  }
+
+  // If the alias doesn't exist
+  @if $breakpoint-found == false {
+    @warn "Oops! Breakpoint '#{$mq}' does not exist."
+  }
+}
+
+// Text hiding for image based text replacement.
+// Higher performance than -9999px because it only renders
+// the size of the actual text, not a full 9999px box.
+
+@mixin hide-text() {
+  overflow: hidden;
+  padding: 0;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+
+// 2x cursor
+
+@mixin cursor($src,$w,$h) {
+  cursor: url(#{$src}.png) $w $h, pointer; /* Legacy */
+		/*cursor: url("/ui/img/cursor.svg") 50 50, pointer;*/
+		cursor: -webkit-image-set(url(#{$src}.png) 1x, url(#{$src}@2x.png) 2x) $w/2 $h/2, pointer; /* Webkit */
+		cursor: image-set(url(#{$src}.png) 1x, url(#{$src}@2x.png) 2x) $w/2 $h/2, pointer; /* Webkit */
+
+}
+
+@mixin fill-parent() {
+	display:block;
+        width:100%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+}
+
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+@mixin vertical-center() {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-center() {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+
+  transform: translateX(-50%);
+}
+
+// Make a context based selector a little more friendly
+// @author Hugo Giraudel
+// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+// Enter width and height of box to convert to fluid percentage padding height
+@mixin pad-ratio($w,$h){
+	padding-top: (($h / $w) * 100%);
+}
+
+@mixin ratio($w,$h){
+  display:block;
+  width:100%;
+  height:0;
+  padding-top: (($h / $w) * 100%);
+  text-indent:100%;
+  white-space:nowrap;
+  overflow:hidden;
+
+}
+
+
+
+/**
+* Get Unit function
+*
+* Return a value from a variable based on a responsive breakpoint vlabel. If the variable passed in is not multidimensional, then the value is simply returned
+*
+* get-unit('mobile',$base-padding);
+*/
+
+@function get-unit($breakpoint,$values){
+
+
+
+	 @if type-of($values) == 'map'{
+
+		@if(map-has-key($values,$breakpoint)){
+			@return map-get($values,$breakpoint);
+
+		} @else{
+
+			@return map-get($values,'*');
+
+		}
+
+
+
+	 } @else{
+
+		 @return $values;
+
+	 }
+
+}
+
+
+
+/**
+ * Responsive property
+ *
+ * Works with the respond-to mixin to output a property with a range of settings based on breakpoint labels supplied
+ *
+ * @include font-size(12px);
+ */
+
+
+
+@mixin responsive($property,$values,$prefix:null){
+
+
+
+    @if type-of($values) == 'map'{
+    @each $key, $value in $values {
+
+
+    @if $key == '*' {
+
+      #{$property}:#{$prefix}#{$value};
+
+    } @else{
+
+      @include respond-to($key){
+
+        #{$property}:#{$prefix}#{$value};
+
+      }
+
+    }
+  }
+  } @else{
+
+	  #{$property}:#{$prefix}#{$values};
+
+  }
+
+
+
+}
+
+/**
+ * Responsive font
+ *
+ * Viewport width font sizes with min and max sizes
+ */
+
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}
+
+
+/**
+ * Responsive X property
+ *
+ * Multiple a multi-dimensional value by a supplied factor
+ */
+
+
+
+@mixin responsive-x($factor,$property,$values){
+
+
+
+    @if type-of($values) == 'map'{
+    @each $key, $value in $values {
+
+
+    @if $key == '*' {
+
+      #{$property}:$factor * $value;
+
+    } @else{
+
+      @include respond-to($key){
+
+        #{$property}:$factor * $value;
+
+      }
+
+    }
+  }
+  } @else{
+
+	  #{$property}:$factor * $values;
+
+  }
+
+
+
+}
+
+/**
+ * Margin-top
+ *
+ * Apply the base padding as a top margin
+ */
+
+@mixin margin-top($x:null){
+  @if($x){
+    @include responsive-x($x,'margin-top',$base-padding);
+  } @else{
+    @include responsive('margin-top',$base-padding);
+  }
+}
+
+/**
+ * Margin-bottom
+ *
+ * Apply the base padding as a botto margin
+ */
+
+@mixin margin-bottom($x:null){
+  @if($x){
+    @include responsive-x($x,'margin-bottom',$base-padding);
+  } @else{
+    @include responsive('margin-bottom',$base-padding);
+  }
+}
+
+// Make a component name with or without a modifier (use * for without)
+@function Component($family,$modifier){
+
+	@if($modifier == '*'){
+		@return "#{$family}";
+	} @else{
+		@return "#{$family}--#{$modifier}";
+
+	}
+
+
+}
+
+// base section styles, fully configurable from settings file
+
+/*
+
+	'background' : $base-background,
+	'color' : $base-color,
+	'heading-font-family' : $base-font-family-alt,
+	'text-font-family' : $base-font-family,
+	'container-padding' : $base-padding,
+	'container-max-width' : $base-max-width,
+	'image-color' : $base-image-color,
+	'link-color' : $base-link-color,
+	'active-color' : $base-active-color
+
+*/
+
+@mixin Section($modifier,$settings,$context:null){
+
+	$classname : Component('.Section', $modifier);
+
+	#{$context} #{$classname}{
+
+		position:relative;
+		@if(map-has-key($settings,'transition')){
+		  transition:map-get($settings,'transition');
+		}
+		@if(map-has-key($settings,'background')){
+		  @include responsive('background',map-get($settings,'background'));
+		}
+		@if(map-has-key($settings,'color')){
+		  @include responsive('color',map-get($settings,'color'));
+		}
+
+		@if(map-has-key($settings,'heading-font-family')){
+  		h1,h2,h3,h4,h5{
+  			font-family: map-get($settings,'heading-font-family');
+  		}
+		}
+
+		@if(map-has-key($settings,'text-font-family')){
+  		p,ul{
+
+  			font-family: map-get($settings,'text-font-family');
+
+  		}
+		}
+
+		@if(map-has-key($settings,'border')){
+			 @include responsive('border',map-get($settings,'border'));
+		  }
+
+		.Section-container{
+			@if(map-has-key($settings,'container-padding')){
+			 @include responsive('padding',map-get($settings,'container-padding'));
+			}
+			@if(map-has-key($settings,'container-max-width')){
+			 @include responsive('max-width',map-get($settings,'container-max-width'));
+		  }
+			margin:0 auto;
+
+		}
+
+		.Section-body{
+		  position:relative;
+		}
+
+		.Image{
+			@if(map-has-key($settings,'image-color')){
+			 @include responsive('background',map-get($settings,'image-color'));
+			}
+
+			@if(map-has-key($settings,'image-color-loaded')){
+			&.ui-lazyImage--loaded{
+
+				@include responsive('background',map-get($settings,'image-color-loaded'));
+
+			}
+			}
+		}
+
+		a{
+			@if(map-has-key($settings,'link-color')){
+			 @include responsive('color',map-get($settings,'link-color'));
+			}
+
+		}
+
+		@if(map-has-key($settings,'active-color')){
+  		.is-active,.is-active > *{
+
+  			@include responsive('color',map-get($settings,'active-color'));
+
+  		}
+		}
+
+
+	}
+
+	// Look for a when-inside key and output another section with the when inside settings
+	@if(map-has-key($settings,'when-inside')){
+
+	   @each $inside-key, $inside-settings in map-get($settings,'when-inside') {
+
+	     @include Section($modifier,$inside-settings,$inside-key);
+
+    }
+
+	}
+
+}
+
+
+/*
+
+Spritesheet mixin
+
+*/
+
+@mixin spritesheet($settings){
+
+$url:map-get($settings,'src');
+$width:map-get($settings,'width');
+$height:map-get($settings,'height');
+$rows:map-get($settings,'rows');
+$columns:map-get($settings,'columns');
+$name:map-get($settings,'name');
+$time:map-get($settings,'time');
+
+$ytime : $time * $rows;
+
+@keyframes #{$name}-x {
+	from {
+		background-position-x: 0;
+	}
+
+	to {
+		background-position-x: ($width * $columns) * -1px;
+	}
+}
+
+@keyframes #{$name}-y {
+	from {
+		background-position-y: 0;
+	}
+
+	to {
+		background-position-y: ($height * $rows) * -1px;
+	}
+}
+
+		%u-spritesheet--#{$name}{
+  		display: block;
+  		width: $width*1px;
+  		height: $height*1px;
+  		overflow:hidden;
+  		background-image: url(#{$url});
+  		background-size: ($width * $columns * 1px) ($height * $rows * 1px);
+  		background-position: 0 0;
+
+  		animation-name: #{$name}-x, #{$name}-y;
+  	   animation-duration: $time*1s, $ytime*1s ;
+  	   animation-iteration-count: infinite;
+  	   animation-timing-function: steps($columns), steps($rows);
+	   }
+
+}

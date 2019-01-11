@@ -1,0 +1,15 @@
+{
+	"title": "AGI",
+	"uri": "/agi",
+	"description": "Hello i'm AGI",
+	"externalUrl": "http://a-g-i.org/",
+	"thumb": "/ui/img/agi/agi-p-01.jpg",
+	"video": "/ui/img/agi/agi-01.mp4",
+	"media" : [
+		{
+			"uri": "/ui/img/agi/agi-01.mp4",
+			"kind": "video",
+			"width": 8
+		}
+	]
+}

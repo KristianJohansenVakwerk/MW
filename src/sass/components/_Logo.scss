@@ -1,0 +1,17 @@
+.Logo {
+	@include pad-ratio(97,44);
+	position: relative;
+
+	.Logo-body {
+		@include fill-parent;
+		background-image:url('/ui/img/logo.svg');
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		background-position: top left;
+		
+
+		span {
+			display: none;
+		}
+	}
+}

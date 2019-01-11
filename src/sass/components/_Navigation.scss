@@ -1,0 +1,15 @@
+.Navigation {
+	
+	.Navigation-containers {
+		@extend %u-grid;
+		margin-left: 0;
+		
+		.Navigation-container {
+			@extend %u-gridItem;
+			padding-left: 0;
+			width: 50%;
+			text-align: center;
+		}
+
+	}
+}

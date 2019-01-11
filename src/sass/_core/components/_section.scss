@@ -1,0 +1,31 @@
+/*
+
+	.Section
+	- Base section component. Uses setting in $base-sections to create pre-defined Section components
+	
+	- Sections have no inherent padding, but it is assumed that their Section-container does
+	
+	<section class="Section">
+		<div class="Section-container">
+			
+			<hgroup class="Section-head"></hgroup>
+			<div class="Section-body"></div>
+			<div class="Section-foot"></div>
+			
+		</div>
+	</section>
+	
+*/
+
+
+.Section-container{
+  @extend %u-cf;
+}
+
+@each $key, $section-settings in $base-sections {
+  
+	@include Section($key,$section-settings);   
+
+}
+
+

@@ -1,0 +1,94 @@
+/** @define Overlay */
+
+/**
+ * Base overlay component
+ */
+
+.Overlay{
+
+  position:absolute;
+  top:0;
+  left:0;
+  background:rgba($base-overlay-background,$base-overlay-transparency);
+  
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  
+  &.Overlay--lightbox{
+    
+    position:fixed;
+    z-index:9999;
+    
+  }
+  
+  &.is-active
+  {
+      visibility:visible;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+  }        
+  /* Fade-Out Effect */
+  &.is-inactive
+  {
+      visibility: visible;
+      pointer-events: none;
+      opacity: 0;
+      top:-9999px;
+      overflow:hidden;
+      height:0;
+      transition: visibility 0s 0.4s, top 0s 0.4s,height 0s 0.4s, opacity 0.4s ease;
+  }
+  
+}
+
+.Overlay-head{
+  
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:auto;
+  text-align:right;
+  @include responsive('padding',$base-padding);
+  z-index:5;
+}
+
+.Overlay-page{
+  
+  
+  
+  
+ 
+}
+
+.Overlay-body{
+  
+
+  @extend %u-valign-children;
+  @extend %u-scrollable;
+  position:absolute;
+  z-index:4;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  white-space:nowrap;
+  text-align:center;
+  
+  & > *{
+    white-space:normal;
+  }
+  
+}
+
+.Overlay-content{
+  
+  @extend %u-container;
+  width:100%;
+  @include responsive('padding',$base-padding);
+  display:inline-block;
+  text-align:$base-text-align;
+  
+}
+

@@ -1,0 +1,105 @@
+/**
+ * Core list system
+ */
+
+/**
+ * List
+ *
+ */
+
+
+
+%u-list--bare{
+  
+  list-style:none;
+  li{
+    
+    padding:0;
+    margin:0;
+    
+  }
+  
+}
+
+%u-list--stacked {
+  li{
+    
+    display:block;
+    
+  }
+}
+
+%u-list--inline {
+  li{
+    
+    display:inline-block;
+    
+  }
+}
+
+%u-list--tabs {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  li{
+    
+    display:table-cell;
+    
+  }
+}
+
+%u-list--grid {
+  position:relative;
+  width:100%;
+  li{
+    display:inline-block;
+    width:100%;
+  }
+}
+
+%u-list--grid-2 {
+  position:relative;
+  width:100%;
+  li{
+    display:inline-block;
+    width:50%;
+  }
+}
+
+%u-list--grid-3 {
+  position:relative;
+  width:100%;
+  li{
+    display:inline-block;
+    width:33.33333%;
+  }
+}
+
+%u-list--grid-4 {
+  position:relative;
+  width:100%;
+  li{
+    display:inline-block;
+    width:25%;
+  }
+}
+
+%u-list--items{
+  & > *{
+  @include responsive('padding-bottom',$base-grid-gutter);
+  &:last-child{
+    padding-bottom:0;
+  }
+  
+  }
+}
+
+%u-list--spec{
+   //@include responsive('padding-bottom',$base-grid-gutter);
+  & > li{
+    
+     @include responsive('padding-bottom',$base-grid-gutter);
+    
+  }
+  
+}

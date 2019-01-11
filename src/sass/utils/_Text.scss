@@ -1,0 +1,24 @@
+%u-text--body {
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	letter-spacing: 0.001em;
+}
+
+%u-text--nav {
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	letter-spacing: 0.001em;
+	text-transform: uppercase;
+}
+
+%u-text--large {
+	font-family: $base-font-family;
+	@include font-size(60px);
+	line-height: 125%;
+	letter-spacing: 0.002em;
+	margin-top: -6px;
+}
+
+%u-text--bold {
+	font-family: $base-font-family--alt;
+}

@@ -1,0 +1,65 @@
+/**
+ * Core overlay system
+ */
+
+/**
+ * Overlay container
+ *
+ * 1. Make the same size as the relative parent
+ * 2. Position it over the parent
+ * 3. Apply a negative `margin-left` to negate the columns’ gutters.
+ */
+
+%u-overlay {
+  display: block; /* 1 */
+  width: 100%; /* 1 */
+  height: 100%; /* 1 */
+  position:absolute; /* 2 */
+  top:0; /* 2 */
+  left:0; /* 2 */
+  
+  &:after{
+    
+    content:'';
+    
+    
+  }
+}
+
+/**
+ * Overlay item
+ *
+ * 1. Display as table so that we can control vertical positioning of content
+ * 2. Make as big as the parent
+ */
+
+%u-overlayItem {
+  display: table; /* 1 */
+  width:100%; /* 2 */
+  height:100%; /* 2 */
+}
+
+/**
+ * Overlay content
+ *
+ * 1. Display as table-cell so that we inherit vertical positioning of content
+ * 2. Make as big as the parent
+ */
+
+%u-overlayContent {
+  display: table-cell; /* 1 */
+  width:100%; /* 2 */
+  height:100%; /* 2 */
+}
+
+/**
+ * Overlay content
+ *
+ * 1. Display as table-cell so that we inherit vertical positioning of content
+ * 2. Make as big as the parent
+ */
+
+%u-overlayBody {
+  display: inline-block; /* 1 */
+  vertical-align:middle;
+}

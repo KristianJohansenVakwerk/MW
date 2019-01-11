@@ -1,0 +1,67 @@
+.Image {
+	background-color:$base-image-color;
+	.Image-media {
+		transition: opacity $base-image-fade .8s ease-in-out;
+	}
+
+	&.Image--loading {
+	
+		.Image-media {
+			opacity: 0;
+		}
+	}
+
+	&.Image--loaded {
+
+		.Image-media {
+			opacity: 1;
+		}
+	}
+
+	&.Image--slider {
+
+		@include when-inside('.Site--home') {
+			padding-top: 0 !important; 
+			background-color: transparent;
+		}
+
+		.Image-media {
+			@include fill-parent;
+
+			@include when-inside('.Site--home') {
+				position: relative;
+				top:auto;
+				left: auto;
+				height: 60vh;
+				background-size: contain;
+				background-position: top center;
+			}
+		}
+	}
+}
+
+.Image-container {	
+	@include fill-parent;
+}
+
+.Image-caption {
+	width: 100%;
+
+	@include responsive('margin-top', ("*": 20px, "mobile": 15px ));
+
+	text-align: center;
+	
+}
+
+.Image.Image--pageTitle {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: transparent;
+
+	.Image-media {
+		background-position: top left;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}

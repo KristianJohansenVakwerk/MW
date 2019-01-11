@@ -1,0 +1,13 @@
+/** @define Container */
+
+/**
+ * Container has auto side margins and max width in line with the base settings
+ */
+
+%u-container{
+    margin-left:auto;
+    margin-right:auto;
+     @include responsive('max-width',$base-max-width);
+     @include responsive('padding-left',$base-grid-gutter);
+     @include responsive('padding-right',$base-grid-gutter);
+}

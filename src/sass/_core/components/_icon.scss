@@ -1,0 +1,51 @@
+.Icon{
+		
+		@extend %u-icon;
+		
+		@include responsive('width',$base-icon-size);
+		@include responsive('height',$base-icon-size);
+		
+		overflow:hidden;
+		@include hide-text();
+		
+		&.Icon--ratio{
+		  @extend %u-box--ratio;
+		  width:100%;
+		  padding-top:100%;
+		}
+		
+		&.Icon--fluid{
+		  @extend %u-box--fluid;
+		  padding-top:0;
+		}
+		
+	}
+	
+	@each $icon in $base-icons{
+	.Icon--#{$icon}{
+	
+		@extend %u-icon--#{$icon};
+		
+		
+	}
+	}
+	
+	@each $icon,$glyph in $base-icon-glyphs{
+	.Icon--glyph-#{$icon}{
+	 
+	 @extend %u-iconfont;
+	 position:relative;
+	 text-indent:0;
+	 
+	 &:before{
+	   @extend %u-iconfont--#{$icon};
+	   display:inline-block;
+	   width:100%;
+	   
+	 }
+    @include responsive('font-size',$base-icon-size);
+		
+		
+		
+	}
+	}

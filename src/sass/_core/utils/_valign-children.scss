@@ -1,0 +1,43 @@
+/**
+ * Align children of this element vertically in the middle
+ */
+
+/**
+ * Cell
+ *
+ * 1. Make it relative so children can borrow its height
+ * 2. Add pseudo element so that theblcok content can sit in the vertical middle (hack to give height to an unknown area)
+ * 3. Immediate children set to inline block
+ * 4. Immeditate children set to vertical align middle
+ */
+
+%u-valign-children {
+  display:block; 
+  position:relative; /* 1 */
+  white-space: nowrap;
+  &:before{ /* 2 */
+      
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    
+    /* Old way */
+    margin-right: -0.25em; /* Adjusts for spacing */
+    
+    /* New Way */
+    
+    width:1px;
+    margin-left:-1px;
+    margin-right:0;
+    
+    }
+    
+    & > *{
+      display:inline-block; /* 3 */
+      vertical-align:middle; /* 4 */
+      white-space: normal;
+      width:100%;
+    }
+}
+

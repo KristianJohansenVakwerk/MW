@@ -1,0 +1,27 @@
+.Scroller{
+  
+  @extend %u-box--fluid;
+  
+  .Scroller-body{
+    @extend %u-box--fluid;
+    @extend %u-scrollable;  
+    z-index:1;
+  }
+  
+  .Scroller-head{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:2;
+  }
+  
+  .Scroller-foot{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    z-index:2;
+  }
+  
+}

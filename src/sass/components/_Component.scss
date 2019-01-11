@@ -1,0 +1,28 @@
+.Components	 {
+	.Component {
+		margin-bottom: 30px;
+		width: 100%; 
+		display: block;
+		padding:5px 10px;
+
+		.Component-title,
+		.Component-container {
+			display: inline-block;
+			position: relative;
+			vertical-align: top;
+			font-family: $base-font-family;
+			@include font-size(16px);
+			text-transform: uppercase;
+
+		}
+
+		.Component-title {
+			width: 20%;
+			
+		}
+
+		.Component-container {
+			width: 80%;
+		}
+	}
+}

@@ -1,0 +1,17 @@
+.Content {
+	
+	position: relative;
+
+	
+ 	p {
+ 		@include responsive('margin-bottom', ("*": 2em, "mobile": 2em));
+ 		@extend %u-text--body;
+
+ 		&:last-child {
+ 			margin-bottom: 0;
+ 		}
+ 	}
+	
+
+
+}

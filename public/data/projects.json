@@ -1,0 +1,133 @@
+{
+	"title": "projects",
+	"id": 11,
+	"uri": "/projects",
+	"template": "projects",
+	"intro": "This is the intro for the projects page",
+	"projects": [
+		{
+			"title": "AGI",
+			"uri": "/agi",
+			"description": "Hello i'm AGI",
+			"externalUrl": "http://a-g-i.org/",
+			"thumb": "/ui/img/agi/agi-p-01.jpg",
+			"video": "/ui/img/agi/agi-01.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/agi/agi-01.mp4",
+					"kind": "video",
+					"width": 8
+				}
+			]
+		},
+		{
+			"title": "Galerie Michael Andersen",
+			"uri": "/gma",
+			"description": "Hello i'm Galerie mikaelandersen",
+			"externalUrl": "http://mikaelandersen.com/",
+			"thumb": "/ui/img/gma/gma-p-01.jpg",
+			"video": "/ui/img/gma/gma-02-new.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/gma/gma-02-new.mp4",
+					"kind": "video",
+					"width": 8,
+					"offset": 0
+				}
+
+			]
+		},
+		{
+			"title": "The German Library Pyongyang",
+			"uri": "/tglp",
+			"description": "Hello i'm The German Library Pyongyang",
+			"externalUrl": "http://thegermanlibrarypyongyang.de/",
+			"thumb": "/ui/img/pyongyang/pyongyang-poster.png",
+			"video": "/ui/img/pyongyang/pyongyang.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/pyongyang/pyongyang.mp4",
+					"kind": "video",
+					"width": 8
+				}
+			]
+		},
+		{
+			"title": "1948 Unbound",
+			"uri": "/unbound",
+			"description": "1948 unbound",
+			"externalUrl": "",
+			"thumb": "/ui/img/technosphere/technosphere-restart.png",
+			"video": "/ui/img/technosphere/technosphere-noise-floor.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/technosphere/technosphere-noise-floor.mp4",
+					"kind": "video",
+					"width": 8
+				},
+				{
+					"uri": "/ui/img/technosphere/technosphere-restart.png",
+					"kind": "image",
+					"width": 5
+				},
+				{
+					"uri": "/ui/img/technosphere/technosphere1.jpeg",
+					"kind": "image",
+					"width": 5
+				}
+			]
+		},
+		{
+			"title": "Visual Trends – Getty Images",
+			"uri": "/getty",
+			"description": "Hello i'm Getty",
+			"externalUrl": "http://visualtrends.gettyimages.com/",
+			"thumb": "/ui/img/getty/getty-p-01.jpg",
+			"video": "/ui/img/getty/getty-02.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/getty/getty-02.mp4",
+					"kind": "video",
+					"width": 8
+				}
+			]
+		},
+		{
+			"title": "Paragon Press",
+			"uri": "/paragon-press",
+			"description": "Hello i'm Paragon Press",
+			"externalUrl": "http://paragonpress.co.uk/",
+			"thumb": "/ui/img/paragon/thumb_2.jpg",
+			"video": "/ui/img/paragon/paragon-01.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/paragon/paragon-01.mp4",
+					"kind": "video",
+					"width": 8
+				}
+			]
+		},
+		{
+			"title": "Matter",
+			"uri": "/matter",
+			"description": "Hello i'm Matter",
+			"externalUrl": "http://matter.co.uk/",
+			"thumb": "/ui/img/matter/matter-p-01.jpg",
+			"video": "/ui/img/matter/matter-01-new.mp4",
+			"media" : [
+				{
+					"uri": "/ui/img/matter/matter-01-new.mp4",
+					"kind": "video",
+					"width": 8
+				}
+			]
+			
+		}
+	]
+}
+
+
+
+
+
+

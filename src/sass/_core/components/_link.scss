@@ -1,0 +1,49 @@
+.Link{
+  
+  display:inline-block;
+  
+  .Link-body{
+		  display:inline-block;
+		  vertical-align:middle;
+		}
+  
+}
+@each $icon in $base-icons{
+	
+	.Link--#{$icon}{
+	  
+	   &:before{
+			
+			@extend %u-icon;
+			@extend %u-icon--#{$icon};
+			@include responsive('width',$base-icon-size);
+			@include responsive('height',$base-icon-size);
+			vertical-align:middle;
+			margin-right:10px;
+			
+		}
+		
+		
+	}
+	
+}
+
+@each $icon,$glyph in $base-icon-glyphs{
+	.Link--glyph-#{$icon}{
+	 &:before{
+			
+			@extend %u-iconfont;
+			@extend %u-iconfont--#{$icon};
+			@include responsive('width',$base-icon-size);
+			@include responsive('height',$base-icon-size);
+			@include responsive('line-height',$base-icon-size);
+			@include responsive('font-size',$base-icon-size);
+			vertical-align:middle;
+			margin-right:10px;
+			
+		}
+		
+		
+	}
+	}
+

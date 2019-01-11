@@ -1,0 +1,210 @@
+.Slider{
+  
+  position:relative;
+  // Make photo sizes by default
+  @extend %u-box--ratio;
+  width:100%;
+  cursor : grab;
+
+
+
+  @include pad-ratio(400,600);
+  overflow:visible;
+  
+  &.Slider--fluid{
+	
+  	// Fluid slider fills its parent the parent..
+  	@extend %u-box--fluid;
+  	padding-top:0;
+  	overflow:visible;
+  	
+  }
+}
+
+.Slider:active {
+	cursor: grapping;
+}
+
+.Slider.Slider--mobileProducts {
+
+	padding-top: auto;
+	height: 60vh;
+
+}
+
+
+ .Slider-controls {
+
+ 	display: none;
+    	
+    	.Slider-prev,
+    	.Slider-next {
+    		position: absolute;
+    		@include responsive('left',('*': 60px, 'mobile': 15px));
+    		width: 27px;
+    		height: 45px;
+    		top:50%; 
+    		transform: translateY(-50%);
+    		cursor: pointer;
+    		z-index: 1; 
+
+    		@include respond-to(mobile) {
+    			width: 16px;
+    			height: 37px;
+    		}
+
+    		// @extend %u-icon--arrow-prev;
+    	}
+
+    	.Slider-next {
+    		left: auto;
+			@include responsive('right',('*': 60px, 'mobile': 15px));
+
+    		
+    		// @extend %u-icon--arrow-next;
+    	}
+}
+
+
+	
+
+.Slider-body{
+    
+    // Slider body fills the parent
+    @extend %u-box--fluid;
+    overflow:hidden;
+    backface-visibility:hidden;
+    z-index:1;
+
+
+
+    div {
+
+    	div {
+    		position: relative;
+    		overflow: hidden !important;
+    	}
+    }
+    
+    & > * {
+
+      height: 100% !important;
+      width: 100%!important;
+      backface-visibility:hidden;
+    }
+    
+    .Slider-item{
+      height: 100% !important;
+      width: 100%!important;
+    }
+
+}
+
+.Slider-pages,.Slider-info{
+	
+	height:auto;
+	position:absolute;
+	top:auto;
+	bottom:0;
+	left:0;
+	@include responsive('padding',$base-padding);
+	
+}
+
+.Slider-pages{
+	
+	text-align: right;
+	
+}
+
+.Slider-arrow{
+	
+	width:30%;
+	cursor:pointer;
+	@include responsive('padding',$base-padding);
+	z-index:2;
+}
+.Slider-arrow--left{
+	
+	left:0;
+	top:0;
+	
+}
+
+.Slider-arrow--right{
+	
+	left:auto;
+	right:0;
+	top:0;
+	text-align:right;
+	
+}
+
+.Slider-arrow{
+		
+		a{
+			
+			display:none;
+			
+		}
+		
+		//cursor:none;
+		@include hide-text();
+		overflow:hidden;
+		width:33%;
+		
+		&:after{
+			
+			@extend %u-icon;
+			@include responsive('width',$base-icon-size);
+			@include responsive('height',$base-icon-size);
+			position:absolute;
+			top:50%;
+			transform:translateY(-50%);
+			
+		}
+		
+		@include when-inside('.Site--no-touch'){
+			&:after{
+				
+				display:none;
+				
+			}
+			&:hover{
+				
+				&:after{
+					
+					display:block;
+					
+				}
+				
+			}
+		}
+		
+	}
+	
+	.Slider-arrow--right{
+		
+		&:after{
+			
+			@extend %u-icon--right !optional;
+			@extend %u-icon--arrow-right !optional;
+			@include responsive('right',$base-padding);
+		}
+		
+	}
+	
+	.Slider-arrow--left{
+		
+		&:after{
+			
+			@extend %u-icon--left !optional;
+			@extend %u-icon--arrow-left !optional;
+			
+			@include responsive('left',$base-padding);
+			
+		}
+		
+		
+		
+	}

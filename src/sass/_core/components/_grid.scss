@@ -1,0 +1,108 @@
+.Grid{
+  @extend %u-grid;
+  
+  & > *,
+  .Grid-item{
+    @extend %u-gridItem;
+    
+  }
+  
+}
+.Grid--spec{
+  
+  @extend %u-grid--spec;
+  
+}
+
+.Grid--2{
+  
+  @extend %u-grid--2;
+  
+}
+
+.Grid--3{
+  
+  @extend %u-grid--3;
+  
+}
+
+.Grid--4{
+  
+  @extend %u-grid--4;
+  
+}
+
+/*
+
+data-breakpoint-col
+
+*/
+
+[data-grid-of]{
+  
+  @extend %u-grid;
+  
+  & > *{
+    @extend %u-gridItem;
+  }
+}
+  
+  @for $i from 1 through 12{
+  
+    [data-grid-of][data-grid-of="#{$i}"]{
+      
+      & > *{
+        width:(1/$i) * 100%;
+      }
+      
+    }
+    
+    [data-grid-of] > *[data-col-one-of="#{$i}"]{
+      width:(1/$i) * 100%;
+    }
+    
+    [data-grid-of] > *[data-col-two-of="#{$i}"]{
+      width:(2/$i) * 100%;
+    }
+
+    [data-grid-of] > *[data-col-three-of="#{$i}"]{
+      width:(3/$i) * 100%;
+    }
+
+    [data-grid-of] > *[data-col-four-of="#{$i}"]{
+      width:(4/$i) * 100%;
+    }
+  
+  }
+  
+  @for $i from 1 through 12{
+  @each $breakpoint in $breakpoints {
+    
+    // Grab the alias and the condition from their respective locations in the list
+      $label: nth($breakpoint, 1);
+
+      @include respond-to($label){
+        
+        [data-#{$label}-grid-of="#{$i}"]{
+    
+          & > *{
+            width:(1/$i) * 100%;
+          }
+          
+        }
+        
+        [data-grid-of] > *[data-#{$label}-one-of="#{$i}"]{
+          width:(1/$i) * 100%;
+        }
+        
+        [data-grid-of] > *[data-#{$label}-two-of="#{$i}"]{
+          width:(2/$i) * 100%;
+        }
+        
+      }
+      
+    }
+  }
+
+
+

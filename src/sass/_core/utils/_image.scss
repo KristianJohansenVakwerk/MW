@@ -1,0 +1,78 @@
+%u-image{
+  
+  position:relative;
+  
+}
+
+/* Ratio box - needs a top padding to give it proportion */
+
+%u-image--ratio{
+  @extend %u-box--ratio;
+  
+}
+
+/* Relative box - must be sized specifically, e.g. keepRatio */
+
+%u-image--cover{
+  
+   @extend %u-box;
+  
+  & > *{
+    
+    @extend %u-box--fluid;
+    background-size:cover;
+	background-position: center center;
+	display: block;
+	
+  }
+  
+}
+
+/* Fluid box - will fill its parent */
+
+%u-image--fluid{
+  
+  @extend %u-box--fluid;
+  
+  & > *{
+    
+    @extend %u-box--fluid;
+     
+  }
+  
+}
+
+/* Ratio cover -  needs a top padding. Images will cover regardless of source size */
+
+%u-image--ratioCover{
+  
+   @extend %u-box--ratio;
+  
+  & > *{
+    
+    @extend %u-box--fluid;
+    background-size:cover;
+		background-position: center center;
+		display: block;
+  }
+  
+}
+
+/* Fluid cover - will fill its parent and scale background image regardless of source size */
+
+%u-image--fluidCover{
+  
+  @extend %u-box--fluid;
+  height:100%;
+  width:100%;
+  
+  & > *{
+    
+    @extend %u-box--fluid;
+    background-size:cover;
+		background-position: center center;
+		display: block;
+  }
+  
+}
+

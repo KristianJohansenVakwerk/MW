@@ -1,0 +1,25 @@
+@for $i from 1 through $columns {
+
+  *[data-width="#{$i}"] {
+	width: ($i / $columns) * 100%;
+
+	@include respond-to(mobile) {
+		width: 100%;
+	}
+
+  }	
+
+}
+
+@for $i from 1 through $columns {
+
+  *[data-offset="#{$i}"] {
+	margin-left: ($i / $columns) * 100%;
+
+	@include respond-to(mobile) {
+		margin-left: 0;
+	}
+
+  }	
+  
+}

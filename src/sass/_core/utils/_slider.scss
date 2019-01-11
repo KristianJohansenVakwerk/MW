@@ -1,0 +1,42 @@
+%u-slider {
+	position:relative;
+	// Make photo sizes by default
+	@extend %u-box--ratio;
+	width:100%;
+	@include pad-ratio(600,400);
+	overflow:visible;
+}
+
+%u-slider-body {
+	
+ 	// Slider body fills the parent
+    @extend %u-box--fluid;
+    overflow:hidden;
+    backface-visibility:hidden;
+    z-index:1;
+    
+    & > * {
+      height: 100% !important;
+      width: 100%!important;
+      backface-visibility:hidden;
+    }
+}
+
+%u-slider-item {
+	height: 100% !important;
+	width: 100%!important;
+}
+
+%u-slider-pages {
+
+	height:auto;
+	position:absolute;
+	top:auto;
+	bottom:0;
+	left:0;
+	@include responsive('padding',$base-padding);
+	
+}
+
+
+	

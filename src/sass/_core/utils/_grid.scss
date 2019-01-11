@@ -1,0 +1,189 @@
+/**
+ * Core grid system
+ */
+
+/**
+ * Grid container
+ *
+ * 1. Account for browser defaults of elements that might be the root node of
+ *    the component.
+ * 2. Ensure consistent default alignment.
+ * 3. Apply a negative `margin-left` to negate the columns’ gutters.
+ */
+
+%u-grid {
+  display: block; /* 1 */
+  margin: 0; /* 1 */
+  padding: 0; /* 1 */
+  text-align: left; /* 2 */
+  @include responsive('margin-left',$base-grid-gutter,'-');
+}
+
+/**
+ * Grid item
+ *
+ * 1. Fundamentals of the non-float grid layout.
+ * 2. Space columns apart.
+ * 3. Keeps content correctly aligned with the grid direction.
+ * 4. Controls vertical positioning of units.
+ * 5. Make cells full-width by default.
+ */
+
+%u-gridItem {
+  display: inline-block; /* 1 */
+  margin: 0;
+  @include responsive('padding-left',$base-grid-gutter); /* 2 */
+  text-align: left; /* 3 */
+  vertical-align: top; /* 4 */
+  width: 100%; /* 5 */
+}
+
+
+
+%u-gridItem--1{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    width:100%
+}
+
+%u-gridItem--2{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(1/2) * 100%,
+        'mobile':100%
+      ));
+  
+}
+
+%u-gridItem--3{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(1/3) * 100%,
+        'mobile':100%
+      ));
+  
+}
+
+%u-gridItem--4{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(1/4) * 100%,
+        'mobile':50%
+      ));
+  
+}
+
+%u-gridItem--5{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(1/5) * 100%,
+        'mobile':50%
+      ));
+  
+}
+
+%u-gridItem--2-3{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(2/3) * 100%,
+        'mobile':100%
+      ));
+  
+}
+
+%u-gridItem--3-4{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(3/4) * 100%,
+        'mobile':50%
+      ));
+  
+}
+
+%u-gridItem--4-10{
+  @extend %u-gridItem;
+  vertical-align: top;
+   // @include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(4/10) * 100%,
+        'mobile':100%
+      ));
+  
+}
+
+%u-gridItem--6-10{
+  @extend %u-gridItem;
+  vertical-align: top;
+    //@include responsive('padding-bottom',$base-grid-gutter);
+    @include responsive('width',(
+        '*':(6/10) * 100%,
+        'mobile':100%
+      ));
+  
+}
+
+%u-grid--spec{
+  @extend %u-grid;
+  
+  & > *{
+    
+    @extend %u-gridItem;
+    vertical-align:top;
+    
+    &:before{
+      content:'';
+      display:block;
+      padding-top:66%;
+      height:0;
+      background:#DDD;
+      
+    }
+    
+  }
+  
+}
+
+%u-grid--2 {
+  @extend %u-grid;
+
+  & > * {
+    @extend %u-gridItem--2;
+
+    
+  }
+}
+
+
+
+%u-grid--3 {
+  @extend %u-grid;
+
+  & > * {
+    @extend %u-gridItem--3;
+  }
+}
+
+
+
+
+
+%u-grid--4 {
+  @extend %u-grid;
+
+  & > * {
+    @extend %u-gridItem--4;
+  }
+}

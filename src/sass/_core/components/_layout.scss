@@ -1,0 +1,98 @@
+.Layout,
+*[data-layout]{ @extend %u-layout;}
+
+.Layout--fluid,
+*[data-layout="fluid"]{ @extend %u-layout--fluid;}
+
+.Layout--window,
+*[data-layout="window"],
+*[data-layout-window]{ @extend %u-layout--window;}
+
+.Layout--abs,
+*[data-layout="abs"]{@extend %u-layout--abs;}
+
+.Layout--fixed,
+*[data-layout="fixed"],
+*[data-layout-fixed]{ @extend %u-layout--fixed;}
+
+.Layout-head,
+*[data-layout-head]{@extend %u-layout-head}
+
+.Layout-body,
+*[data-layout-body]{@extend %u-layout-body}
+
+.Layout-centre,
+*[data-layout-centre],
+*[data-layout-center]{@extend %u-layout-centre}
+
+.Layout-foot,
+*[data-layout-foot]{@extend %u-layout-foot}
+
+.Layout-right,
+*[data-layout-right]{@extend %u-layout-right}
+
+.Layout-left,
+*[data-layout-left]{@extend %u-layout-left}
+
+.Layout-fluid,
+*[data-layout-fluid]{ @extend %u-layout--fluid;}
+
+.Layout-tl,
+*[data-layout-tl]{@extend %u-layout-tl}
+
+.Layout-tr,
+*[data-layout-tr]{@extend %u-layout-tr}
+
+.Layout-bl,
+*[data-layout-bl]{@extend %u-layout-bl}
+
+.Layout-br,
+*[data-layout-br]{@extend %u-layout-br}
+
+.Layout-tm,
+*[data-layout-tm]{@extend %u-layout-tm}
+
+.Layout-bm,
+*[data-layout-bm]{@extend %u-layout-bm}
+
+.Layout-lm,
+*[data-layout-lm]{@extend %u-layout-lm}
+
+.Layout-rm,
+*[data-layout-rm]{@extend %u-layout-rm}
+
+.Layout-br,
+*[data-layout-br]{@extend %u-layout-br}
+
+.Layout-bg,
+*[data-layout-bg]{@extend %u-layout-bg}
+
+.Layout-middle,
+*[data-layout-middle]{@extend %u-layout-middle}
+
+.Layout-scroll,
+*[data-layout-scroll]{@extend %u-layout-scroll}
+
+.Layout-front,
+*[data-layout-front]{z-index:5}
+
+.Layout-back,
+*[data-layout-back]{z-index:0}
+
+.Layout-container,
+*[data-layout-container]{
+
+  @extend %u-layout-container;
+
+}
+
+.Layout--debug div{
+
+  border:1px solid black;
+  background:rgba(0,0,0,0.25);
+  min-width:50px;
+  min-height:50px;
+  color:#FFF;
+
+}
+

@@ -1,0 +1,71 @@
+/*
+
+Can be extended on a component or pseudo element, add icon types and just send in an icon file:
+
+	%u-icon--close{
+	
+		background-image:url('/ui/img/icons/close.svg');
+	
+	}
+	
+	Examples for making a component or pseudo element display like an icon...
+
+	.Icon{
+		
+		@extend %u-icon;
+		@extend %u-box--ratio;
+		width:100%;
+		padding-top:100%;
+		
+		
+		
+	}
+	
+	.Icon--closeBlack{
+	
+		@extend %u-icon--close;
+		
+		
+	}
+	
+	.Link--icon{
+		
+		&:before{
+			
+			@extend %u-icon;
+			@extend %u-icon--close;
+			width:20px;
+			height:20px;
+		}
+		
+	}
+
+	
+	
+*/
+
+%u-icon{
+	background:transparent center no-repeat;
+	background-size:100% auto;
+	content:'';
+	display:inline-block;
+	transition:all 0.4s ease;
+	transform-origin:50% 50%;
+	
+	/*@include when-inside(':hover >'){
+		
+		opacity:0.5;
+		
+	}*/
+}
+
+@each $icon in $base-icons{
+	
+	%u-icon--#{$icon}{
+	
+		background-image:url('/ui/img/icons/#{$icon}.svg');
+		
+	}
+	
+}
+

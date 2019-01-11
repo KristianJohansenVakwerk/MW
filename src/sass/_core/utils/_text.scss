@@ -1,0 +1,59 @@
+@each $label,$settings in $base-text-families{
+  
+
+  $weights : map-get($settings,'weights');
+  $sizes : map-get($settings,'sizes');
+  @each $weight,$weight-settings in $weights{
+    
+    %u-text--#{$label}--#{$weight}{
+		
+		@if type-of($weight-settings) == "map" {
+			
+			@each $property, $value in $weight-settings {
+				#{$property} : #{$value};
+			}	
+		} @else {
+	       font-family: #{$weight-settings};			
+		}
+
+
+     
+    }
+    
+    @each $size,$size-settings in $sizes{
+      %u-text--#{$label}--#{$weight}--#{$size}{
+          @extend %u-text--#{$label}--#{$weight};
+         @include font-size($size-settings);
+      
+        
+      }
+    }
+  }
+  
+}
+
+@each $label,$modifiers in $base-text-applications{
+  	
+    %u-text--#{$label}{
+	    
+	    @if type-of($modifiers) == 'map' {
+	  		
+	  		@each $property, $value in $modifiers {
+		  		
+		  		@if $property == 'base' {
+				  	 @extend %u-text--#{$value};			  		
+		  		} @else {
+			  		#{$property}:#{$value};
+		  		}
+	  		}
+	  	
+	  	} @else {
+		  	 @extend %u-text--#{$modifiers};
+	  	}
+        
+    }
+    
+  
+}
+
+

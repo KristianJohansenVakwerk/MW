@@ -1,0 +1,85 @@
+/** @define Content */
+
+
+/**
+ * Content
+ */
+
+.Content {
+  
+  & >:last-child{
+    
+    margin-bottom:0;
+    
+  }
+  
+}
+
+.Content--meta{
+  display:none!important;
+}
+
+/*
+
+Make a content style for each of the base text families
+
+*/
+
+@each $label,$settings in $base-text-families{
+  
+
+  $weights : map-get($settings,'weights');
+  $sizes : map-get($settings,'sizes');
+  @each $weight,$weight-settings in $weights{
+    
+    .Content--#{$label}--#{$weight}{
+        
+       @extend %u-text--#{$label}--#{$weight};
+     
+    }
+    
+    @each $size,$size-settings in $sizes{
+      .Content--#{$label}--#{$weight}--#{$size}{
+          @extend %u-text--#{$label}--#{$weight}--#{$size};
+      }
+    }
+  }
+  
+}
+
+
+/*
+
+Make a content style for each of the text applications
+
+*/
+
+@each $label,$modifiers in $base-text-applications{
+	
+  	.Content--#{$label}{
+        
+       @extend %u-text--#{$label};
+     
+	}  
+	
+}
+
+.Content--spec{
+  font-family:monospace;
+  padding:10px;
+	display: inline-block;
+	border: 1px #333 solid;
+	color: #333;
+	border-radius: 5px;
+  
+}
+
+.Content--spec-util{
+  @extend .Content--spec;
+  border: 1px #999 solid;
+  color: #999;
+}
+
+
+
+

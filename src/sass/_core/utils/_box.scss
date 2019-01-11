@@ -1,0 +1,66 @@
+%u-box{
+  
+  position:relative;
+  
+}
+
+%u-box--fluid{
+  
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  display: block;
+  
+}
+
+%u-box--ratio{
+  
+  @extend %u-box;
+  height:0;
+  overflow:hidden;
+  width:auto;
+  
+  & > *{
+    
+    @extend %u-box--fluid;
+    
+  }
+  
+  
+}
+
+%u-box--photoPortrait{
+  
+  @extend %u-box--ratio;
+  @include pad-ratio(600,800);
+  @include responsive('height',$base-grid-gutter); // Allows two landscapes to fit next to a portrait
+  box-sizing:content-box; // Need to set the box size so the height and padding are combined to add the extra gutter
+  
+}
+
+%u-box--photoLandscape{
+  
+  @extend %u-box--ratio;
+  @include pad-ratio(600,400);
+
+}
+
+%u-box--photoLandscape-large{
+  
+  @extend %u-box--ratio;
+  @include pad-ratio(1200,800);
+  @include responsive-x(0.3,'height',$base-grid-gutter); // Allows two landscapes to fit next to a portrait
+  //@include responsive('width',$base-grid-gutter); // Allows two landscapes to fit next to a portrait
+  box-sizing:content-box; // Need to set the box size so the height and padding are combined to add the extra gutter
+  
+  
+}
+
+%u-box--square{
+  
+  @extend %u-box--ratio;
+  padding-top:100%;
+ 
+}

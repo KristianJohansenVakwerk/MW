@@ -1,0 +1,57 @@
+@import "sass/fonts/Grot10_Regular/_font-face.scss";
+@import "sass/fonts/Grot10_SemiBold/_font-face.scss";
+
+$columns: 12;
+
+// Colours
+
+
+// Settings
+$base-font-family:"Grot10", Helvetica, sans-serif;
+$base-font-family--alt:"Grot10 SemiBold", Helvetica, sans-serif;
+$base-font-size:15px;
+$base-line-height: 26px;
+$base-icon-size : 28px;
+$base-width: 1920px;
+
+$base-icons : "";
+
+$base-link-color: white;
+
+$base-padding: ('*' : 60px,'mobile' : 10px);
+
+// Core
+@import "sass/_core/_core.scss";
+@import "sass/_core/components/_icon.scss";
+@import "sass/_core/components/_image.scss";
+@import "sass/_core/components/_layout.scss";
+
+// Theme
+@import "sass/_core/themes/_vanilla.scss";
+
+// components
+
+@import "sass/components/_Component.scss";	
+@import "sass/components/_Layout.scss";
+@import "sass/components/_Site.scss";
+@import "sass/components/_Template.scss";
+@import "sass/components/_Project.scss";
+@import "sass/components/_List.scss";
+@import "sass/components/_Navigation.scss";
+@import "sass/components/_Image.scss";
+@import "sass/components/_Blocks.scss";
+@import "sass/components/_Grid.scss";
+@import "sass/components/_Slider.scss";
+@import "sass/components/_Content.scss";
+@import "sass/components/_Item.scss";
+@import "sass/components/_Logo.scss";
+@import "sass/components/_Video.scss";
+
+
+
+
+// utils 
+
+@import "sass/utils/_Text.scss";
+
+

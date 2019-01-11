@@ -1,0 +1,104 @@
+/** @define Image */
+
+
+/**
+ * Image
+ */
+
+.Image {
+  
+  @extend %u-image--cover;
+  .Image-media{
+
+  		background-repeat:no-repeat;
+
+  }
+  overflow:hidden;
+  
+  & > *{
+	  transition:opacity $base-image-fade $base-image-delay $base-image-ease;
+	  
+  }
+  
+  &.ui-lazyImage{
+	  & > *{
+	  	opacity:0;
+	  }
+  }
+  
+  &.ui-lazyImage--loaded{
+	  
+	  & > *{
+		  
+		  opacity:1;
+		  
+	  }
+	  
+	  &.is-invisible{
+		  
+		  & > *{
+		  	transition:opacity 0.5s ease;
+		  	opacity:0;
+		  
+	  	}
+		  
+	  }
+	  
+  }
+   
+  
+}
+
+.Image--portrait {
+  
+  @extend %u-box--photoPortrait;
+  @extend %u-image--ratioCover;
+  
+}
+
+.Image--landscape {
+  
+  @extend %u-box--photoLandscape;
+  @extend %u-image--ratioCover;
+  
+}
+
+
+
+.Image--square {
+  
+  @extend %u-box--square;
+  @extend %u-image--ratioCover;
+  
+}
+
+
+.Image--fluid {
+  
+  @extend %u-image--fluidCover;
+  
+}
+
+
+.Image--fixed{
+	
+
+	& > *{
+		
+		background-attachment:fixed;
+		
+	}
+	
+}
+
+.Image--fit{
+	
+
+	& > *{
+		
+		background-size:contain;
+		background-repeat:no-repeat;
+		
+	}
+	
+}

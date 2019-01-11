@@ -1,0 +1,6 @@
+.Item {
+
+	.Item-title {
+		@include responsive('margin', ('*': 25px 0, 'mobile': 20px 0 ));
+	}
+}

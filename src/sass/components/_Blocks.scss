@@ -1,0 +1,17 @@
+.Blocks {
+	
+	.Block {
+	
+
+		&.Block--slider { 
+			position: relative;
+
+			.Block-content {
+				@include pad-ratio(1400,930);
+				position: relative;	
+			}
+			
+		}
+
+	}
+}

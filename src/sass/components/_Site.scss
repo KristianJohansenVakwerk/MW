@@ -1,0 +1,102 @@
+html,body {
+	height: 100%;
+
+	// background-color: rgb(230,230,230);
+	// overflow-x: auto;
+	// overflow-y: auto;
+
+	.Site-meta {
+		display: none;
+	}
+
+	button:active {
+	    outline: none;
+	    border: none;   
+	}
+}
+#root {
+	min-height: 100%;
+}
+
+.Site {
+
+	position: relative;
+	height: auto;
+	background-color:white;
+
+
+	
+	.Site-page {
+		@include responsive('padding', ('*': 40px 30px, 'mobile': 20px 15px ));
+	}
+	
+	a {
+		color: black;
+		
+	}
+
+	button:active {
+	    outline: none;
+	    border: none;   
+	}
+
+	button:focus {outline:0;}
+
+
+	.Site-head {
+	
+		position: fixed;
+		top:0;
+		@include responsive('padding', ('*': 40px 0 , 'mobile': 20px 0 ));
+		@include responsive('left', ('*': 30px, 'mobile': 15px ));
+		width: 25%;
+		height: 100vh;
+		z-index: 99;
+		overflow-y: scroll;
+		display: inline-block;
+		vertical-align: top;
+		
+		.Site-logo {
+			display: block;
+			width: 105px;
+			margin-top: 1px;
+			margin-bottom: 2em;
+
+		}
+
+		a {
+			color:black;
+		}
+
+		a.active {
+			@extend %u-text--bold;
+		}
+
+	}
+
+	.Site-body {
+		width: 75%;
+		margin-left: 25%;
+		height: auto;
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		
+	}
+
+	.Site-foot {
+
+		position: fixed;
+		bottom:0;
+		opacity: 1;
+		background-color: black;
+		left: 0;
+		width: 100%;
+		height: 40px;
+		padding-left: 0px;
+		z-index: 99;
+		transform: translate3d(0,0,0);
+		transition: transform .3s .5s ease-in-out;
+		color: white;
+	}
+}

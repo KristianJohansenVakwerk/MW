@@ -1,0 +1,214 @@
+/**
+ * Settings
+ *
+ * Core defaults
+ */
+
+/**
+ * Breakpoints
+ *
+ * Hold our breakpoint aliases and conditions in a list. These can be invoked
+ * later on via the `respond-to()` mixin found in _mixins.scss.
+ */
+
+$breakpoints: (
+  "mobile"    "(max-width: 745px)",
+  "tablet"    "(min-width: 746px) and (max-width: 1023px)",
+  "tablet-up" "(min-width: 746px)",
+  "desktop"   "(min-width: 1024px)",
+  "desktop-plus"      "(min-width: 1200px)",
+  "wide"      "(min-width: 1400px)",
+  "shallow"    "(min-width: 1024px) and (max-height: 850px)",
+  "iphone5"   "(min-width: 320px) and (max-width: 568px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation: portrait)"
+) !default;
+
+/**
+ * Base Grid & Spacing values
+ */
+
+$base-vw: 1024 !default;
+$base-vh: 768 !default;
+$base-padding: ('*' : 20px,'mobile' : 10px) !default;
+$base-grid-gutter: $base-padding !default;
+$base-max-width: 1400px !default;
+$base-max-text-width: 700px !default;
+$base-max-dialog-width: 700px !default;
+
+/**
+ * Base Type Settings
+ */
+
+$base-font-size: 16px !default;
+$base-line-height: 24px !default;
+$base-letter-spacing: 0 !default;
+
+$base-font-family: "Helvetica", Arial, sans-serif !default;
+$base-font-family-bold: "Helvetica", Arial, sans-serif !default;
+$base-font-family-alt: monospace !default;
+$base-text-align: left !default;
+
+$base-text-families : (
+
+  'sans' : (
+    'weights' : (
+      'regular' : '"Helvetica", Arial, sans-serif',
+      'bold' : '"Helvetica", Arial, sans-serif'
+    ),
+    'sizes' : (
+      'small' : $base-font-size * 0.75,
+      'medium' : $base-font-size,
+      'large' : $base-font-size * 1.5
+    )
+  ),
+  'mono' : (
+    'weights' : (
+      'regular' : monospace
+    ),
+    'sizes' : (
+      'medium' : $base-font-size,
+      'small' : $base-font-size * 0.75
+    )
+  )
+
+)!default;
+
+$base-text-applications: (
+  'heading' : 'sans--bold--large',
+  'body' : 'sans--regular--medium',
+  'caption' : 'mono--regular--small'
+)!default;
+
+$base-text-weights: ('*' : '20px','mobile' : '10px');
+$base-text-sizes: ('*' : '20px','mobile' : '10px');
+
+
+/**
+ * Base Colours
+ */
+
+$base-color: #000 !default;
+$base-background: #FFF !default;
+$base-link-color: #999 !default;
+$base-link-opacity-hover: 1 !default;
+$base-active-color: #666 !default;
+
+$base-overlay-background: #000 !default;
+$base-overlay-transparency: 0.85 !default;
+
+$base-ui-color: #e3e3e3 !default;
+$base-ui-color-alt: #000 !default;
+
+$base-placeholder-color: #787878 !default;
+$base-placeholder-opacity:.3 !default;
+
+$base-selection-background: rgba(0,0,0, 0.75) !default;
+$base-selection-color: #FFF !default;
+
+$base-image-color: #EEE !default;
+$base-image-color-loaded: #EEE !default;
+$base-image-fade:1.2s!default;
+$base-image-delay:0.25s!default;
+$base-image-ease:ease!default;
+
+/**
+ * Base Icons
+ */
+
+$base-icons : "cross" "arrow-right" "arrow-left" "arrow-up" "arrow-down" "play" "search" !default;
+$base-icon-size : 24px!default;
+
+$base-icon-glyphs : (
+  "mail": "\e002",
+  "search": "\e036",
+  "zoom-in": "\e037",
+  "zoom-out": "\e038",
+  "location": "\e070",
+  "arrow-left": "\e094",
+  "arrow-right": "\e095",
+  "arrow-up": "\e096",
+  "arrow-down": "\e097",
+  "plus": "\e114",
+  "minus": "\e115",
+  "check": "\e116",
+  "cross": "\e117",
+  "inbox": "\e122",
+  "open": "\e128",
+  "ellipsis": "\e129",
+  "location2": "\e947",
+  "play": "\ea1c",
+  "pause": "\ea1d"
+)!default;
+
+
+/**
+ * Base Cursors
+ */
+
+
+$base-cursor-prev:pointer;
+$base-cursor-next:pointer;
+$base-cursor-play:pointer;
+$base-cursor-pause:pointer;
+
+/**
+ * Base Sections (Sections being regions that allow you to control core styling)
+ * The keys in this array will be used as modifiers (.Section--{key}) with the config settings provided
+ * At a config level Sections can define:
+ 	- background color
+ 	- foreground color,
+ 	- heading typeface,
+ 	- body typeface
+ 	- padding for the .Section-body
+ 	- max width for the .Section-body
+ 	- colour for images
+ 	- colour links
+ 	- colour for active items
+ */
+
+$base-sections: (
+
+	'*' : (
+		'transition' : all 0.4s ease,
+		'background' : transparent,
+		'color' : $base-color,
+		'heading-font-family' : $base-font-family,
+		'text-font-family' : $base-font-family,
+		'container-padding' : $base-padding,
+		'container-max-width' : $base-max-width,
+		'image-color' : $base-image-color,
+		'link-color' : $base-link-color,
+		'active-color' : $base-active-color
+
+	),
+	'modifier' : (
+		'background' : $base-color,
+		'color' : $base-background,
+		'heading-font-family' : $base-font-family-alt,
+		'text-font-family' : $base-font-family,
+		'container-padding' : $base-padding,
+		'container-max-width' : $base-max-width,
+		'image-color' : $base-background,
+		'link-color' : $base-ui-color,
+		'active-color' : $base-active-color,
+		'when-inside' : (
+  		'.Site--modified' : (
+    		'background' : $base-color,
+    		'color' : $base-background
+    	)
+    )
+	)
+
+)!default;
+
+
+/**
+ * Top level hooks
+ */
+
+$base-touch-class: '.Site--touch' !default;
+
+
+
+
+
+
