@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { call, put } from 'redux-saga/effects';
 import _settings from '../_settings';
 import SC from 'soundcloud';
 

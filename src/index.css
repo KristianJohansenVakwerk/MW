@@ -2666,7 +2666,9 @@ html, body {
     z-index: 99;
     overflow-y: scroll;
     display: inline-block;
-    vertical-align: top; }
+    vertical-align: top;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; }
     @media (max-width: 745px) {
       .Site .Site-head {
         padding: 20px 0; } }
@@ -2680,6 +2682,8 @@ html, body {
       margin-bottom: 2em; }
     .Site .Site-head a {
       color: black; }
+  .Site .Site-head::-webkit-scrollbar {
+    display: none; }
   .Site .Site-body {
     width: 75%;
     margin-left: 25%;
@@ -2691,15 +2695,23 @@ html, body {
     position: fixed;
     bottom: 0;
     opacity: 1;
-    background-color: black;
     left: 0;
     width: 100%;
-    height: 40px;
+    height: 75px;
     padding-left: 0px;
     z-index: 99;
-    transform: translate3d(0, 0, 0);
-    transition: transform .3s .5s ease-in-out;
-    color: white; }
+    transform: translateY(100%);
+    transition: transform .3s ease-in-out;
+    color: white;
+    z-index: 99; }
+    .Site .Site-foot .Site-foot-audio {
+      width: 100%;
+      height: 100%;
+      position: relative; }
+
+.Site.Site--sound .Site-foot {
+  transform: translateY(0%);
+  transition: transform .3s .5s ease-in-out; }
 
 .Template {
   position: relative;
@@ -3086,12 +3098,60 @@ html, body {
     width: 100%;
     height: 100%; }
 
+.Audio {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to left, transparent, transparent 50%, #000000 50%, #000000);
+  background-position: 0% 0%;
+  background-size: 200% 100%;
+  mix-blend-mode: difference; }
+  .Audio .Audio-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transform: translateY(-50%); }
+    .Audio .Audio-container > * {
+      display: inline-block;
+      vertical-align: middle; }
+  .Audio .Audio-controls {
+    padding: 0 30px;
+    width: 85px;
+    height: 100%;
+    position: relative; }
+    @media (max-width: 745px) {
+      .Audio .Audio-controls {
+        padding: 0 15px; } }
+    .Audio .Audio-controls button {
+      line-height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+      mix-blend-mode: overlay; }
+    .Audio .Audio-controls .Audio-play {
+      display: block; }
+    .Audio .Audio-controls .Audio-pause {
+      display: none; }
+  .Audio .Audio-time {
+    text-align: right; }
+
+.Audio.Audio--playing .Audio-play {
+  display: none; }
+
+.Audio.Audio--playing .Audio-pause {
+  display: block; }
+
 .Content p {
   font-family: "Grot10", Helvetica, sans-serif;
   font-size: 15px;
   letter-spacing: 0.001em; }
 
-.List .List-item a, .List .List-item.List-item--subNavTitle {
+.List .List-item a, .List .List-item.List-item--subNavTitle, .Audio .Audio-controls button {
   font-family: "Grot10", Helvetica, sans-serif;
   font-size: 15px;
   letter-spacing: 0.001em;
@@ -3104,6 +3164,13 @@ html, body {
   line-height: 125%;
   letter-spacing: 0.002em;
   margin-top: -6px; }
+
+.Audio .Audio-title {
+  font-family: "Grot10", Helvetica, sans-serif;
+  font-size: 30px;
+  font-size: 2.92969vw;
+  line-height: 100%;
+  letter-spacing: 0.002em; }
 
 .Site .Site-head a.active, .List .List-item.List-item--subNavTitle {
   font-family: "Grot10 SemiBold", Helvetica, sans-serif; }

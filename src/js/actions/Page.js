@@ -1,11 +1,38 @@
 import axios from 'axios';
 import _settings from '../_settings';
+import SC from 'soundcloud';
 
 const remote =	_settings.remote;
 
 
 let cache = []
 let cachedData = [];
+
+export function getTrack(TRACK_ID) {
+
+	SC.initialize({ client_id: _settings.CLIENT_ID });
+
+	return (dispatch, getState ) => {
+		
+		const state = getState();
+
+		dispatch({ type: "GETTING_SOUND" });
+
+		if(TRACK_ID) {
+
+			SC.get('/tracks/'+ TRACK_ID).then( function(track) {
+
+				dispatch({ type: "GOT_SOUND", payload: {"track": track, "widget": SC} });
+
+			});		
+		} else {
+			dispatch({ type: "NO_SOUND", payload: {} });
+		}
+
+		
+
+	}
+}
 
 export function getPage(slug){
 
@@ -49,6 +76,8 @@ export function getPage(slug){
 								});
 
 					dispatch({ type: "GOT_PAGE", payload: data })	
+					dispatch(getTrack( data[0].acf.sound_track_id ));
+
 
 					})	
 

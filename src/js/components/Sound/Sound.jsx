@@ -41,14 +41,6 @@ class Sound extends Component {
       
   }
 
-  componentDidUpdate(prevProps, prevState) {
-     console.log('prevProps',prevProps.trackId, 'props',this.props.trackId)  
-    
-    if(prevProps.trackId !== this.props.trackId) {
-      this.props.fetchSound(this.props.trackId);
-    } 
-  }
-
   render () {
 
   	let { sound, loaded } = this.props;
@@ -58,7 +50,7 @@ class Sound extends Component {
     <div className="Sound">
 
     	<div className="Sound-track">
-        { loaded && <AudioStream trackUri={sound.uri} client_id={_settings.CLIENT_ID} /> }
+         <AudioStream trackUri={sound.uri} client_id={_settings.CLIENT_ID} />
       </div>
 
   	</div>

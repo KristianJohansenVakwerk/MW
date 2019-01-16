@@ -19,6 +19,15 @@
 	margin-top: -6px;
 }
 
+
+%u-text--audio {
+	font-family: $base-font-family;
+	@include vw('font-size', 30px);
+	line-height: 100%;
+	letter-spacing: 0.002em;
+	
+}
+
 %u-text--bold {
 	font-family: $base-font-family--alt;
 }

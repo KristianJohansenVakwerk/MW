@@ -8,6 +8,7 @@ import Window from './Window'
 import Site from './Site'
 import Link from './Link'
 import TransitionWrapper from './TransitionWrapper'
+import TransitionContainer from './TransitionContainer'
 import Navigation from './Navigation'
 import RouteTransition from './RouteTransition'
 import FadeRoute from './FadeRoute'
@@ -55,6 +56,7 @@ export {
 	Sound,
 	Slideshow,
 	Title,
-	AudioStream
+	AudioStream,
+	TransitionContainer
 
 }

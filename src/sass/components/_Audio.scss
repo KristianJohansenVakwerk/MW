@@ -1,0 +1,83 @@
+.Audio {
+
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(to left,
+                                      transparent,
+                                      transparent 50%,
+                                      #000000 50%,
+                                      #000000);
+	background-position: 0% 0%;
+	background-size: 200% 100%;
+	mix-blend-mode: difference;
+	
+	.Audio-container {	
+		
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height:auto;
+		transform: translateY(-50%);
+
+
+		& > * {
+			display: inline-block;
+			vertical-align: middle;
+
+			
+		}
+
+	}
+
+	.Audio-controls {
+		@include responsive('padding', ('*': 0 30px, 'mobile': 0 15px ));
+		width: 85px;
+		height: 100%;
+		position: relative;
+		
+		button {
+			@extend %u-text--nav;
+			line-height: 100%;
+			position: absolute;
+			top:50%;
+			left: 50%;
+			transform:translate(-50%,-50%);
+			width: 100%;
+			height: auto;
+			mix-blend-mode: overlay;
+			
+		}
+
+		.Audio-play {
+			display: block;			
+		}
+
+		.Audio-pause {
+			display: none;
+		}
+
+
+	}
+
+	.Audio-title {
+		@extend %u-text--audio;
+		
+	}
+
+	.Audio-time {
+		text-align: right;
+	}
+}
+
+.Audio.Audio--playing {
+
+	.Audio-play {
+		display: none;
+	}
+
+	.Audio-pause {
+		display: block;
+	}
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
+import _settings from '../_settings';
 
 import { 
   NavLink,
@@ -8,13 +9,12 @@ import {
 } from 'react-router-dom';
 
 
-import { Navigation, SubNav, Logo, Sound } from '../components';
+import { Navigation, SubNav, Logo, Sound, AudioStream } from '../components';
 import Routes from '../Routes.js';
 
 
 const mapStateToProps = state => ({
-  page: state.page.data,  
-  loaded: state.page.loaded
+  sound: state.sound.sound
 });
 
 
@@ -24,23 +24,29 @@ class Layout extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = { progress: { width: 100+"%" }}
+
+    this.progress = this.progress.bind(this);
+
 
   }
 
-  componentWillMount() {
+  componentWillMount() {}
 
-  }
+  componentDidMount() {}
 
-  componentDidMount() {
-
+  progress = (pct) => {
+    let newWidth = 100 - pct;
+    this.setState({ progress: { width: newWidth+"%" } });
     
   }
  
   render() {
     
-    let { page, loaded } = this.props;
+    let { sound } = this.props;
 
+    
+    console.log(this.state.progress)
     return (
 
       <div className="Site-page">
@@ -69,6 +75,14 @@ class Layout extends Component {
       
         </div>
 
+        <div className="Site-foot">
+
+          <div className="Site-foot-bg" style={this.state.progress}></div>
+          
+          <div className="Site-foot-audio">
+           { sound.track &&  <AudioStream trackUri={sound.track.uri} client_id={_settings.CLIENT_ID} trackTitle={sound.track.title} trackDuration={sound.track.duration} widget={sound.widget} progress={this.progress}  /> }
+           </div>
+        </div>
     
     </div>
       
